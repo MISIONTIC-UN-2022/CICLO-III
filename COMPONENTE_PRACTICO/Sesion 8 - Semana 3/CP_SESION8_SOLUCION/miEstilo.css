@@ -1,0 +1,31 @@
+h1 {
+  color: #377ba8;
+  background-color: lightblue;
+}
+form {
+  width: 350px;
+  padding: 16px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #ccc;
+}
+form label {
+  width: 72px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+form input {
+  width: 200px;
+  padding: 3px 10px;
+  border: 1px solid #f6f6f6;
+  border-radius: 3px;
+  margin: 8px 10px;
+  display: inline-block;
+}
+
+button {
+  text-align: center;
+  font-weight: bold;
+  min-width: 200px;
+}
