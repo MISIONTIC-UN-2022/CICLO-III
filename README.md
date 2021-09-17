@@ -4,9 +4,12 @@ En este repositorio se anexa toda la información correspondiente al ciclo III d
 Repositorio para docentes.
 
 CT: COMPONENTES TEORICOS
+
 CP: COMPONENTES PRACTICOS
+
 MA: MATERIAL DE APOYO
-RETOS
+
+RE: RETOS
 
 ## Pasos para descarga
 
