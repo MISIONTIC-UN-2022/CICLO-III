@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sesion 6 - MISION TIC</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Un formulario sirve para enviar datos a otra página que los recoge para usarlos o almacenarlos."
+    />
+
+    <style type="text/css">
+      h1 {
+        color: #377ba8;
+        text-align: center;
+        background-color: lightgrey;
+      }
+      form {
+        width: 350px;
+        padding: 16px;
+        border-radius: 10px;
+        margin: auto;
+        background-color: #ccc;
+      }
+
+      form input {
+        padding: 3px 10px;
+        border: 1px solid #f6f6f6;
+        border-radius: 3px;
+        margin: 8px 10px;
+        display: inline-block;
+      }
+
+      button {
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registro para vacunación COVID-19</h1>
+
+    <form action="" method="get">
+      <p>Nombre: <input type="text" name="nombre" /></p>
+
+      <p>Usuario: <input type="text" name="username" /></p>
+
+      <p class="">
+        Sexo: <input type="radio" name="sexo" value="h" /> hombre
+        <input type="radio" name="sexo" value="m" /> mujer
+      </p>
+
+      <p>Correo: <input type="text" name="correo" maxlength="100" /></p>
+
+      <p>
+        Contraseña:
+        <input type="password" name="password" />
+      </p>
+
+      <p>
+        <input type="checkbox" name="condiciones" /> Declaro haber leido y
+        acepto las condiciones generales del programa y la normativa sobre
+        protección de datos
+      </p>
+
+      <button type="submit" value="Enviar">Enviar</button>
+    </form>
+  </body>
+</html>
