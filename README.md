@@ -11,6 +11,8 @@ MA: MATERIAL DE APOYO
 
 RE: RETOS
 
+RU: RUBRICAS Y PLANTILLAS
+
 ## Pasos para descarga
 
 1. Clonar repositorio desde vscode https://github.com/MISIONTIC-UN-2022/CICLO-III.git (botón Code) 
