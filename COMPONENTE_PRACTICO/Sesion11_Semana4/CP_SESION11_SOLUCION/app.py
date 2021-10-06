@@ -29,7 +29,7 @@ def register():
                 return render_template( 'register.html' )
 
             if not utils.isPasswordValid( password ):
-                error = 'La contraseña debe contenir al menos una minúscula, una mayúscula, un número y 8 caracteres'
+                error = 'La contraseña debe contener al menos una minúscula, una mayúscula, un número y 8 caracteres'
                 flash( error )
                 return render_template( 'register.html' )
 
@@ -42,7 +42,7 @@ def register():
             # yag.send(to=email, subject='Activa tu cuenta',
             #        contents='Bienvenido, usa este link para activar tu cuenta ')
             flash( 'Revisa tu correo para activar tu cuenta' )
-            return render_template( 'login.html' )
+            return redirect( 'login' )
         return render_template( 'register.html' )
     except:
         return render_template( 'register.html' )
@@ -51,8 +51,7 @@ def register():
 @app.route( '/login', methods=('GET', 'POST') )
 def login():
     try:
-        if request.method == 'POST':
-
+        if request.method == 'POST':            
             username = request.form['username']
             password = request.form['password']
 
