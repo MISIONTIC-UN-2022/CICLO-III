@@ -17,7 +17,7 @@ def index():
 
 @app.route( '/register', methods=('GET', 'POST') )
 def register():
-    try:
+    #try:
         if request.method == 'POST':
             name= request.form['nombre']
             username = request.form['username']
@@ -29,16 +29,12 @@ def register():
                 "INSERT INTO usuario (nombre, usuario, correo, contraseña) VALUES ('%s','%s','%s','%s')" % (name, username, email, password)
                 #"; UPDATE usuario set correo='hack';"
             )
-            #db.execute(
-            #    'INSERT INTO usuario (usuario, correo, contraseña) VALUES ('%s','%s','%s')' %
-            #    (username, email, password)
-            #)
+
             db.commit()
-            print( "P2" )
             return render_template( 'login.html' )
         return render_template( 'register.html' )
-    except:
-        return render_template( 'register.html' )
+    #except:
+        #return render_template( 'register.html' )
 
 
 @app.route( '/login', methods=('GET', 'POST') )
@@ -63,9 +59,6 @@ def login():
             user = db.execute(
                 'SELECT * FROM usuario WHERE usuario = ? AND contraseña = ? ', (username, password)
             ).fetchone()
-
-            # print('USER ')
-            # print(user)
 
             if user is None:
                 error = 'Usuario o contraseña inválidos'
