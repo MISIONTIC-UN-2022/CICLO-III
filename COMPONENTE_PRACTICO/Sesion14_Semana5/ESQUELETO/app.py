@@ -20,7 +20,6 @@ def index():
 def register():
     try:
         if request.method == 'POST':
-            print('ENTRA')
             name= request.form['nombre']
             username = request.form['username']
             password = request.form['password']

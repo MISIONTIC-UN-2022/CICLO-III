@@ -99,6 +99,7 @@ def login():
             if user is None:
                 error = 'Usuario o contraseña inválidos'
             else:
+                #Otra manera de validar hash password (o sol CP 14)
                 if check_password_hash( user['contraseña'], password ):
                     session.clear()
                     session['user_id'] = user[0]

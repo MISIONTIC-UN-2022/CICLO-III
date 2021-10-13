@@ -1,7 +1,8 @@
 import functools
 import os
+from re import X
 
-from flask import Flask, render_template, flash, request, redirect, url_for, session, send_file, current_app, g
+from flask import Flask, render_template, flash, request, redirect, url_for, session, send_file, current_app, g, make_response
 
 import utils
 from db import get_db, close_db
@@ -89,21 +90,39 @@ def login():
                 error = 'Contraseña requerida'
                 flash( error )
                 return render_template( 'login.html' )
-
+    
             user = db.execute(
                 'SELECT * FROM usuario WHERE usuario = ? AND contraseña = ?', (username, password)
             ).fetchone()
 
             if user is None:
-                error = 'Usuario o contraseña inválidos'
+                user = db.execute(
+                    'SELECT * FROM usuario WHERE usuario = ?', (username,)
+                ).fetchone()
+                if user is None:
+                    error = 'Usuario no existe'
+                else:
+                    #Validar contraseña hash            
+                    store_password = user[4]
+                    result = check_password_hash(store_password, password)
+                    if result is False:
+                        error = 'Contraseña inválida'
+                    else:
+                        session.clear()
+                        session['user_id'] = user[0]
+                        resp = make_response( redirect( url_for( 'send' ) ) )
+                        resp.set_cookie( 'username', username )
+                        return resp
+                    flash( error )
             else:
                 session.clear()
                 session['user_id'] = user[0]
                 return redirect( url_for( 'send' ) )
             flash( error )
-            close_db
+            close_db()
         return render_template( 'login.html' )
-    except:
+    except Exception as e:
+        print(e)
         return render_template( 'login.html' )
 
 
