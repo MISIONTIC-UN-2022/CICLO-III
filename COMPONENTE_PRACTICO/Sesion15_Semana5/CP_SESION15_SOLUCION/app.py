@@ -27,9 +27,10 @@ def register():
         return redirect( url_for( 'send' ) )
     try:
         if request.method == 'POST':
-            username = request.form['usuario']
+            name= request.form['nombre']
+            username = request.form['username']
             password = request.form['password']
-            email = request.form['email']
+            email = request.form['correo']
             error = None
             db = get_db()
 
@@ -55,8 +56,8 @@ def register():
 
             hashContraseña = generate_password_hash( password )
             db.execute(
-                'INSERT INTO usuario (usuario, correo, contraseña) VALUES (?,?,?)',
-                (username, email, hashContraseña)
+                'INSERT INTO usuario (nombre, usuario, correo, contraseña) VALUES (?,?,?,?)',
+                (name, username, email, hashContraseña)
             )
             db.commit()
 
@@ -78,7 +79,7 @@ def login():
         if request.method == 'POST':
             db = get_db()
             error = None
-            username = request.form['usuario']
+            username = request.form['username']
             password = request.form['password']
 
             if not username:
